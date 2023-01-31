@@ -3,10 +3,10 @@ import Nav from "./components/Nav";
 
 function App() {
   return (
-    <>
+    <div className="max-w-screen-xl m-auto">
       <Nav />
       <main>Content</main>
-    </>
+    </div>
   );
 }
 

@@ -1,9 +1,9 @@
 import { FcSearch } from "react-icons/fc";
-import { CiHeart, CiUser} from "react-icons/ci"
+import { CiBag1, CiHeart, CiUser} from "react-icons/ci"
 const index = () => {
   return (
     <>
-      <div className="flex mx-4 items-center">
+      <div className="flex mx-4 items-center justify-between">
         <h4 className="uppercase font-bold text-primary py-4 border-b border-primary">
           Phimmoi.net
         </h4>
@@ -14,6 +14,7 @@ const index = () => {
         <span className="flex items-center">
         <CiUser/>
         <CiHeart/>
+        <CiBag1/>
         </span>
       </div>
     </>
