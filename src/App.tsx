@@ -1,16 +1,16 @@
-import "./App.css";
-import Nav from "./components/Nav";
-import Promo from "./components/Promo";
+import { Routes, Route } from "react-router-dom";
+import "./App.scss";
+import Home from "./components/Home";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 
 function App() {
   return (
-    <>
-      <Promo />
-      <div className="max-w-screen-xl m-auto">
-        <Nav />
-        <main>Content</main>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="/user/login" element={<Login />} />
+      <Route path="/user/register" element={<Register />} />
+    </Routes>
   );
 }
 

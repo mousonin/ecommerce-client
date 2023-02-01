@@ -1,6 +1,12 @@
-import { FcSearch } from "react-icons/fc";
 import { CiBag1, CiHeart, CiUser, CiSearch } from "react-icons/ci";
+import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../utils/firebase";
+import Logout from "../../Auth/Logout";
+
 const index = () => {
+  const [user, loading] = useAuthState(auth);
+
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -47,10 +53,26 @@ const index = () => {
           />
         </span>
         <span className="flex items-center justify-around">
-          <div className="m-3 flex items-center">
-            <CiUser className="mx-1" />
-            <p>Log In</p>
-          </div>
+          {!user && (
+            <Link to="/user/login">
+              <button className="m-3 flex items-center">
+                <CiUser className="mx-1" />
+                <p>Log In</p>
+              </button>
+            </Link>
+          )}
+          {user && (
+            <>
+              <Link to="/">
+                <button className="m-3 flex items-center">
+                  <CiUser className="mx-1" />
+                  <p>{user.displayName}</p>
+                </button>
+              </Link>
+              <Logout />
+            </>
+          )}
+
           <CiHeart className="w-5 h-4 m-3" />
           <CiBag1 className="w-5 h-4 m-3" />
         </span>
