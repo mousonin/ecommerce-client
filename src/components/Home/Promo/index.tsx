@@ -10,7 +10,7 @@ const index = () => {
             free shipping for order over $50
           </p>
         </div>
-        <span className="text-xs mx-2">Help and FAQs</span>
+        <span className="text-xs mx-1">Help and FAQs</span>
         <div className="outline-none flex items-center">
           <p className="text-xs mx-1 font-medium">EN, $</p>
           <CiPlay1 className="rotate-90 h-2 w-4" />

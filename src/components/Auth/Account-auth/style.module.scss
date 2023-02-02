@@ -1,0 +1,23 @@
+.submit-btn {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    transition-duration: 0.6s;
+    border-radius: inherit;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+  &:hover p {
+    z-index: 1;
+    color: black;
+    transform: translateX(-4px);
+    transition-duration: 0.6s;
+  }
+}

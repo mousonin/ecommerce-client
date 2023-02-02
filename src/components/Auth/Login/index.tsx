@@ -1,28 +1,13 @@
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
 import SocialLog from "../Social-log";
+import LoginAcc from "../Account-auth/Login";
 const Login = () => {
   return (
-    <div className="max-w-xl m-auto border rounded-sl">
-      <div>
-        <p>Sign up</p>
+    <div className="max-w-xl m-auto border rounded-xl">
+      <div className="max-w-md m-auto">
+        <p className="my-5">Sign up</p>
         <SocialLog />
-        {/* <div>
-          <p>OR</p>
-        </div>
-        <form action="">
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" />
-          <label htmlFor="password">Password</label>
-          <input type="text" name="password" id="password" />
-          <button type="submit">
-            <p>Log in</p>
-          </button>
-          <p>
-            Don't have an account?
-            <span>Sign up</span>
-          </p>
-        </form> */}
+        <span className="text-center block my-5">OR</span>
+        <LoginAcc />
       </div>
     </div>
   );

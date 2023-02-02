@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../utils/firebase";
 import Logout from "../../Auth/Logout";
+import styles from "./style.module.scss";
 
 const index = () => {
   const [user, loading] = useAuthState(auth);
@@ -47,7 +48,7 @@ const index = () => {
         <span className="flex items-center border-solid border rounded-lg border-slate-400 p-1 grow  max-w-4xl">
           <CiSearch className="mx-1" />
           <input
-            className="outline-none mx-2 grow"
+            className="outline-none mx-1 grow"
             placeholder="Search"
             type="text"
           />
@@ -62,18 +63,18 @@ const index = () => {
             </Link>
           )}
           {user && (
-            <>
-              <Link to="/">
+            <div className={`relative ${styles["d-user-atb"]}`}>
+              <Link to="/user">
                 <button className="m-3 flex items-center">
                   <CiUser className="mx-1" />
                   <p>{user.displayName}</p>
                 </button>
               </Link>
               <Logout />
-            </>
+            </div>
           )}
 
-          <CiHeart className="w-5 h-4 m-3" />
+          <CiHeart className="w-5 h-4 m-3 hover:text-black" />
           <CiBag1 className="w-5 h-4 m-3" />
         </span>
       </div>
