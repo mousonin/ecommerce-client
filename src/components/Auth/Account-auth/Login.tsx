@@ -1,30 +1,34 @@
-import styles from "./style.module.scss";
+import { BaseButton } from "../Social-log";
+import { BaseFormElement } from "../Social-log";
 const LoginAcc = () => {
+  const characterBtn = [
+    {
+      id: 1,
+      pText: "Login",
+    },
+  ];
+
+  const characterFormList = [
+    {
+      id: 1,
+      name: "Email",
+      type: "email",
+    },
+    {
+      id: 2,
+      name: "Password",
+      type: "password",
+    },
+  ];
   return (
     <div>
       <form className="flex flex-col">
-        <label htmlFor="email" className="mx-1">
-          Email
-        </label>
-        <input
-          type="text"
-          placeholder="Please input a valid email"
-          className="outline-none m-1 px-1 rounded-md border-mateColors-0 border-solid border"
-        />
-        <label htmlFor="email" className="mx-1">
-          Password
-        </label>
-        <input
-          type="text"
-          placeholder="Please input a valid password"
-          className="outline-none m-1 px-1 rounded-md border-mateColors-0 border-solid border"
-        />
-        <button
-          type="submit"
-          className={`flex items-center border rounded-xl w-full justify-center p-1 my-5 bg-mateColors-0 ${styles["submit-btn"]}`}
-        >
-          <p className="m-1 text-white">Log in</p>
-        </button>
+        {characterFormList.map((character) => (
+          <BaseFormElement character={character} key={character.id} />
+        ))}
+        <div className="my-5">
+          <BaseButton text="Login" key={characterBtn[0].id} />
+        </div>
       </form>
     </div>
   );
