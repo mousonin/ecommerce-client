@@ -13,6 +13,12 @@ const Login = () => {
         <SocialLog />
         <span className="text-center block my-5">OR</span>
         <LoginAcc />
+        <div className="flex justify-center">
+          <p>Don't have an account ?</p>
+          <Link to="/user/register">
+            <span className="underline mx-1">Register</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

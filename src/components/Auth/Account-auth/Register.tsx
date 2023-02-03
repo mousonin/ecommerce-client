@@ -4,11 +4,16 @@ const LoginAcc = () => {
   const characterFormList = [
     {
       id: 1,
+      name: "Full Name",
+      type: "text",
+    },
+    {
+      id: 2,
       name: "Email",
       type: "email",
     },
     {
-      id: 2,
+      id: 3,
       name: "Password",
       type: "password",
     },
