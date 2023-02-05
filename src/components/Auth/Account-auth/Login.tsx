@@ -1,4 +1,4 @@
-import { BaseButton, handleSubmit } from "../../Base/Button";
+import { BaseButton, handleSubmit, login } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
 const LoginAcc = () => {
   const characterFormList = [
@@ -20,7 +20,7 @@ const LoginAcc = () => {
           <BaseFormElement character={character} key={character.id} />
         ))}
         <div className="my-5">
-          <BaseButton text="Login" key={"1"} />
+          <BaseButton text="Login" key={"1"} onClick={login}/>
         </div>
       </form>
     </div>
