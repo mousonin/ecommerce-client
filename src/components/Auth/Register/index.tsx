@@ -1,5 +1,5 @@
 import SocialLog from "../Social-log";
-import LoginAcc from "../Account-auth/Register";
+import RegisterAcc from "../Account-auth/Register";
 import { TfiClose } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 const Register = () => {
@@ -12,8 +12,8 @@ const Register = () => {
         <p className="my-5">Sign up</p>
         <SocialLog />
         <span className="text-center block my-5">OR</span>
-        <LoginAcc />
-        <div className="flex justify-center">
+        <RegisterAcc />
+        <div className="flex justify-center mb-5">
           <p>Have an account ?</p>
           <Link to="/user/login">
             <span className="underline mx-1">Log in</span>

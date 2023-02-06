@@ -1,18 +1,24 @@
 import { useState } from "react";
+import { configureStore } from "@reduxjs/toolkit";
+import styles from "./style.module.scss";
 
-export const BaseFormElement = (props: any) => {
-  const [values, setValues] = useState("");
-    return (
-      <>
-        <label htmlFor="" className="m-1">
-          {props.character.name}
-        </label>
-        <input
-          onChange={(e) => setValues(e.target.value)}
-          type={props.character.type}
-          placeholder={`Please input a valid ${props.character.name}`}
-          className="outline-none m-1 px-1 rounded-md border-mateColors-0 border-solid border"
-        />
-      </>
-    );
-  };
+type TProps = {
+  name: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  errorMessage?: string;
+  type: string;
+};
+
+export const BaseFormElement = ({ name, errorMessage, ...other }: TProps) => {
+  return (
+    <>
+      <label className="m-1">{name}</label>
+      <input
+        name={name}
+        className={`outline-none m-1 p-1 rounded-md border-mateColors-0 border-solid border ${styles.inputEl}`}
+        {...other}
+      />
+      <span className="text-red-700 hidden">{errorMessage}</span>
+    </>
+  );
+};

@@ -17,10 +17,6 @@ export const BaseButton = ({ onClick, text, icon }: TProps) => {
   );
 };
 
-export function handleSubmit(e: React.FormEvent<EventTarget>) {
-    e.preventDefault();
-  }
-
-export async function login() {
-  console.log("login");
-}
+export const handleSubmit = (e: any) => {
+  e.preventDefault();
+};

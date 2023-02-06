@@ -1,35 +1,66 @@
+import { useState } from "react";
 import { BaseButton, handleSubmit } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
-const LoginAcc = () => {
-  const characterFormList = [
-    {
-      id: 1,
-      name: "Full Name",
-      type: "text",
-    },
-    {
-      id: 2,
-      name: "Email",
-      type: "email",
-    },
-    {
-      id: 3,
-      name: "Password",
-      type: "password",
-    },
-  ];
+const inputs = [
+  {
+    id: 1,
+    name: "Fullname",
+    type: "text",
+    errorMessage: "This full name must be 5+ characters long",
+  },
+  {
+    id: 2,
+    name: "Email",
+    type: "email",
+    errorMessage: "Email is invalid",
+  },
+  {
+    id: 3,
+    name: "Password",
+    type: "password",
+    errorMessage: "Password is not strong",
+  },
+];
+
+const RegisterAcc = () => {
+  const [values, setValues] = useState({
+    Fullname: "",
+    Email: "",
+    Password: "",
+  });
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  async function login() {
+    fetch("http://localhost:3001/users/register", {
+      method: "POST",
+      body: JSON.stringify({
+        values,
+      }),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  }
+
+  console.log(values);
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col">
-        {characterFormList.map((character) => (
-          <BaseFormElement character={character} key={character.id} />
+        {inputs.map((input) => (
+          <BaseFormElement key={input.id} {...input} onChange={onChange} />
         ))}
         <div className="my-5">
-          <BaseButton text="Login" key={"1"} />
+          <BaseButton text="Login" key={"1"} onClick={login} />
         </div>
       </form>
     </div>
   );
 };
 
-export default LoginAcc;
+export default RegisterAcc;
