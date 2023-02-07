@@ -1,30 +1,43 @@
 import { useRef } from "react";
 import { useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 import { BaseButton, handleSubmit } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
 const LoginAcc = () => {
   const inputs = [
     {
       id: 1,
-      name: "Email",
+      name: "email",
       type: "email",
     },
     {
       id: 2,
-      name: "Password",
+      name: "password",
       type: "password",
     },
   ];
   const [values, setValues] = useState({
-    Email: "",
-    Password: "",
+    email: "",
+    password: "",
   });
+
+  console.log(values);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  console.log(values);
+  async function login(params: any) {
+    fetch("http://localhost:3001/users/login", {
+      method: "POST",
+      body: JSON.stringify(params),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  }
 
   return (
     <div>
@@ -33,7 +46,7 @@ const LoginAcc = () => {
           <BaseFormElement key={input.id} {...input} onChange={onChange} />
         ))}
         <div className="my-5">
-          <BaseButton text="Login" key={"1"} />
+          <BaseButton text="Login" key={"1"} onClick={() => login(values)} />
         </div>
       </form>
     </div>

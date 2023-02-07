@@ -4,19 +4,19 @@ import { BaseFormElement } from "../../Base/FormElement";
 const inputs = [
   {
     id: 1,
-    name: "Fullname",
+    name: "fullName",
     type: "text",
     errorMessage: "This full name must be 5+ characters long",
   },
   {
     id: 2,
-    name: "Email",
+    name: "email",
     type: "email",
     errorMessage: "Email is invalid",
   },
   {
     id: 3,
-    name: "Password",
+    name: "password",
     type: "password",
     errorMessage: "Password is not strong",
   },
@@ -24,9 +24,9 @@ const inputs = [
 
 const RegisterAcc = () => {
   const [values, setValues] = useState({
-    Fullname: "",
-    Email: "",
-    Password: "",
+    fullName: "",
+    email: "",
+    password: "",
   });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,18 +36,15 @@ const RegisterAcc = () => {
   async function login() {
     fetch("http://localhost:3001/users/register", {
       method: "POST",
-      body: JSON.stringify({
-        values,
-      }),
+      redirect: "follow",
+      body: JSON.stringify(values),
       headers: {
         "content-type": "application/json",
       },
     })
       .then((response) => response.json())
-      .then((json) => console.log(json));
+      .then(() => console.log(values));
   }
-
-  console.log(values);
 
   return (
     <div>
