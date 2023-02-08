@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { redirect } from "react-router-dom";
 import { BaseButton, handleSubmit } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
 const inputs = [
@@ -36,14 +37,13 @@ const RegisterAcc = () => {
   async function login() {
     fetch("http://localhost:3001/users/register", {
       method: "POST",
-      redirect: "follow",
       body: JSON.stringify(values),
       headers: {
         "content-type": "application/json",
       },
     })
       .then((response) => response.json())
-      .then(() => console.log(values));
+      .then(() => redirect("/users"));
   }
 
   return (
