@@ -21,6 +21,9 @@ module.exports = {
         },
         mateColors: ["rgb(45, 52, 54)"],
       },
+      margin: {
+        "2/4": '50%',
+      }
     },
   },
   plugins: [],

@@ -4,7 +4,7 @@ import { TfiClose } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 const Login = () => {
   return (
-    <div className="max-w-xl m-auto border rounded-xl">
+    <div className="max-w-xl m-auto border rounded-xl mt-2/4 -translate-y-2/4">
       <div className="max-w-md m-auto relative">
         <Link to="/">
           <TfiClose className="absolute right-0 border-solid border border-mateColors-0 rounded-xl p-1" />

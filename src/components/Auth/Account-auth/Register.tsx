@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { redirect, useNavigate } from "react-router-dom";
 import { BaseButton, handleSubmit } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
+import { registerAccount } from "../accountSlices";
 const inputs = [
   {
     id: 1,
@@ -24,6 +26,17 @@ const inputs = [
 ];
 
 const RegisterAcc = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleSubmit = (values: any) => {
+    return new Promise ((resolve) => {
+      setTimeout(() => {
+        dispatch(registerAccount(values));
+        navigate("/");
+        resolve(true);
+      },1000)
+    })
+  }
   const [values, setValues] = useState({
     fullName: "",
     email: "",
@@ -34,7 +47,8 @@ const RegisterAcc = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  async function login() {
+  async function login(e: { preventDefault: () => void; }) {
+    e.preventDefault();
     fetch("http://localhost:3001/users/register", {
       method: "POST",
       body: JSON.stringify(values),
@@ -43,7 +57,7 @@ const RegisterAcc = () => {
       },
     })
       .then((response) => response.json())
-      .then(() => redirect("/users"));
+      .then(() => handleSubmit(values));
   }
 
   return (
@@ -61,3 +75,4 @@ const RegisterAcc = () => {
 };
 
 export default RegisterAcc;
+

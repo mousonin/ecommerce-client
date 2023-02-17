@@ -1,7 +1,7 @@
 import { log } from "console";
 import { useRef } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { redirect, useNavigate } from "react-router-dom";
 import { BaseButton, handleSubmit } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
@@ -19,9 +19,6 @@ const inputs = [
   },
 ];
 const LoginAcc = () => {
-  const userList = useSelector((state: any) => state.user.list);
-  console.log(userList);
-
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -42,7 +39,6 @@ const LoginAcc = () => {
     })
       .then((response) => response.json())
       .then((json) => console.log(json))
-      .then(() => redirect("/user"));
   }
 
   return (
