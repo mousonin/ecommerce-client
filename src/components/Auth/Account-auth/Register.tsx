@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BaseButton, handleSubmit } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
 import { registerAccount } from "../accountSlices";
@@ -45,10 +45,10 @@ const RegisterAcc = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    console.log(values)
   };
 
-  async function login(e: { preventDefault: () => void; }) {
-    e.preventDefault();
+  async function login() {
     fetch("http://localhost:3001/users/register", {
       method: "POST",
       body: JSON.stringify(values),

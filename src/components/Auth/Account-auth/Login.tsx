@@ -1,10 +1,8 @@
-import { log } from "console";
-import { useRef } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { redirect, useNavigate } from "react-router-dom";
-import { BaseButton, handleSubmit } from "../../Base/Button";
+import { BaseButton } from "../../Base/Button";
 import { BaseFormElement } from "../../Base/FormElement";
+import {loginAccount} from "../accountSlices";
 
 const inputs = [
   {
@@ -19,11 +17,20 @@ const inputs = [
   },
 ];
 const LoginAcc = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
   console.log(values);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    dispatch(loginAccount({
+      ...values
+    }))
+
+  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
